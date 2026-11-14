@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ApartScan Wireframes</title>
+<meta name="robots" content="noindex">
+<style>
+:root{
+  --accent:#007AFF;
+  --ink:#1d1d1f;
+  --ink2:#6e6e73;
+  --line:#d1d1d6;
+  --fill:#f2f2f7;
+  --fill2:#e5e5ea;
+  --cam:#4a4a4e;
+  --strom:#E89A00;
+  --wasser:#12A594;
+  --heizung:#E5484D;
+  --gas:#8E5CD9;
+  --stroke:1.95px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:#fff;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1440px;margin:0 auto;padding:40px 32px 80px}
+h1{font-size:28px;margin:0 0 6px}
+.meta{color:var(--ink2);font-size:15px;margin:0}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin:16px 0 0;font-size:14px;color:var(--ink2)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:16px;height:3px;border-radius:2px;display:inline-block}
+.legend .acc{width:16px;height:10px;border:var(--stroke) solid var(--accent);border-radius:3px;background:#fff}
+section{margin-top:48px}
+h2{font-size:20px;margin:0 0 4px}
+section>p{color:var(--ink2);font-size:15px;margin:0 0 18px;max-width:70ch}
+
+/* flow strip */
+.strip{position:relative}
+.track{position:relative;display:grid;grid-template-columns:repeat(6,1fr);column-gap:3.4%}
+.step{container-type:inline-size;min-width:0}
+.lbl{font-size:13px;font-weight:600;color:var(--ink2);min-height:2.6em;margin-bottom:6px;line-height:1.3}
+.lbl b{color:var(--ink);font-weight:600}
+svg.links{position:absolute;left:0;top:0;pointer-events:none;overflow:visible;z-index:5}
+svg.links path.c{fill:none;stroke:var(--accent);stroke-width:var(--stroke);vector-effect:non-scaling-stroke;stroke-linecap:round}
+
+/* phone */
+.phone{width:100%;aspect-ratio:9/19.5;border:1.5px solid var(--ink);border-radius:13cqw;padding:2.4cqw;background:#fff}
+.screen{position:relative;height:100%;border-radius:11cqw;overflow:hidden;background:#fff;display:flex;flex-direction:column;font-size:4.6cqw;line-height:1.3}
+.sb{flex:0 0 auto;height:10cqw;padding:3.4cqw 8cqw 0;font-size:3.8cqw;font-weight:600;display:flex;justify-content:space-between}
+.sb span:last-child{letter-spacing:.06em;color:var(--ink2)}
+.hd{padding:2cqw 5cqw 3cqw}
+.hd .back{color:var(--ink2);font-size:4cqw;margin-bottom:1cqw}
+.hd h3{margin:0;font-size:7.4cqw;line-height:1.15}
+.hd .s{margin-top:1cqw}
+.body{flex:1 1 auto;padding:0 5cqw;display:flex;flex-direction:column;gap:2.6cqw;min-height:0;overflow:hidden}
+.s{font-size:3.8cqw;color:var(--ink2)}
+.t{font-weight:600}
+.nav{flex:0 0 auto;margin-top:auto;background:var(--fill);border-top:1px solid var(--fill2);padding:3cqw 4cqw 7cqw;display:flex;justify-content:space-around;font-size:3.6cqw;color:var(--ink2)}
+.nav span{display:flex;flex-direction:column;align-items:center;gap:1cqw}
+.nav span::before{content:"";width:5.5cqw;height:5.5cqw;border-radius:1.6cqw;background:#c7c7cc}
+.nav .cur{color:var(--ink);font-weight:600}
+.nav .cur::before{background:var(--ink2)}
+
+.card{border:1px solid var(--line);border-radius:4cqw;padding:3.4cqw;background:#fff}
+.li{background:var(--fill);border:1px solid var(--fill);border-radius:3.6cqw;padding:2.8cqw 3.4cqw;display:flex;justify-content:space-between;align-items:center;gap:2cqw}
+.li .chev{color:#aeaeb2}
+.btn{background:var(--fill2);border:1px solid #c7c7cc;border-radius:3.6cqw;padding:3cqw;text-align:center;font-weight:600}
+.btn.ghost{background:#fff}
+.chips{display:flex;flex-wrap:wrap;gap:1.6cqw}
+.chip{border:1px solid var(--line);border-radius:99px;padding:.8cqw 2.4cqw;font-size:3.6cqw;display:inline-flex;align-items:center;gap:1.2cqw;background:#fff}
+.chip i{width:2.4cqw;height:2.4cqw;border-radius:50%;display:inline-block}
+.chip.sel{background:var(--fill2);border-color:#aeaeb2;font-weight:600}
+.seg{display:flex;background:var(--fill);border:1px solid var(--fill);border-radius:3cqw;padding:.8cqw;gap:.8cqw;font-size:3.8cqw}
+.seg span{flex:1;text-align:center;padding:1.6cqw 0;border-radius:2.4cqw;border:1px solid transparent}
+.seg .sel{background:#fff;border-color:var(--line);font-weight:600}
+.warn{border:1px solid var(--line);border-left:1.2cqw solid var(--strom);border-radius:3.6cqw;padding:2.6cqw 3.2cqw;background:#fff}
+.cam{background:var(--cam);color:#fff;position:relative}
+.cam .pill{position:absolute;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.45);border-radius:99px;padding:1.2cqw 3cqw;font-size:3.5cqw;white-space:nowrap}
+.sheet{background:#fff;border-radius:6cqw 6cqw 0 0;padding:4cqw 5cqw 7cqw;display:flex;flex-direction:column;gap:2.4cqw}
+.qr{width:16cqw;height:16cqw;border:1px solid var(--line);border-radius:3cqw;margin:0 auto 2cqw;display:grid;place-items:center;background:var(--fill)}
+.ok{color:#248A3D;font-weight:600}
+.on{border:var(--stroke) solid var(--accent)!important}
+.bar{height:1.6cqw;background:var(--fill2);border-radius:1cqw;overflow:hidden}
+.bar i{display:block;height:100%;width:75%;background:#fff}
+svg{display:block}
+
+@media (max-width:760px){
+  .wrap{padding:28px 16px 60px}
+  .strip{overflow-x:auto;margin:0 -16px;padding:0 16px 8px;scroll-padding:0 16px;-webkit-overflow-scrolling:touch}
+  .strip:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+  .track{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:176px;column-gap:44px;width:max-content;padding-right:16px}
+  section>p{display:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>ApartScan</h1>
+  <p class="meta">Wireframes · Stand 14.11.2026 · eine App, zwei Modi (Bewohner und Handwerker), umschaltbar in den Einstellungen</p>
+  <div class="legend">
+    <span><i style="background:var(--strom)"></i>Strom</span>
+    <span><i style="background:var(--wasser)"></i>Wasser</span>
+    <span><i style="background:var(--heizung)"></i>Heizung</span>
+    <span><i style="background:var(--gas)"></i>Gas</span>
+    <span><span class="acc"></span>angetippt</span>
+  </div>
+
+  <!-- ============ BEWOHNER ============ -->
+  <section>
+    <h2>Bewohner: Wohnung öffnen und vor dem Bohren prüfen</h2>
+    <p>Lena zieht in die Lindwurmstr. 12 und will im Wohnzimmer ein Regal anbringen.</p>
+    <div class="strip" tabindex="0" aria-label="Ablauf Bewohner">
+      <div class="track">
+
+        <div class="step">
+          <div class="lbl"><b>1</b> Start</div>
+          <div class="phone"><div class="screen">
+            <div class="sb"><span>9:41</span><span>●●●</span></div>
+            <div class="hd"><h3>ApartScan</h3></div>
+            <div class="body" style="justify-content:center">
+              <div class="card" style="text-align:center;padding:5cqw 4cqw">
+                <div class="qr"><svg viewBox="0 0 10 10" width="60%"><g fill="#8e8e93"><rect x="0" y="0" width="4" height="4"/><rect x="6" y="0" width="4" height="4"/><rect x="0" y="6" width="4" height="4"/><rect x="6" y="6" width="2" height="2"/><rect x="8" y="8" width="2" height="2"/></g></svg></div>
+                <div class="t">Noch keine Wohnung</div>
+                <div class="s" style="margin-top:1.4cqw">Öffne die Klappe deines Sicherungskastens und scanne den QR-Code.</div>
+              </div>
+              <div class="btn on" data-id="b1">QR-Code scannen</div>
+            </div>
+            <div class="nav"><span class="cur">Wohnung</span><span>Hilfe</span><span>Einstellungen</span></div>
+          </div></div>
+        </div>
+
+        <div class="step">
+          <div class="lbl"><b>2</b> QR im Sicherungskasten</div>
+          <div class="phone"><div class="screen">
+            <div class="cam" style="flex:1 1 auto" data-id="t1">
+              <div class="sb" style="color:#fff"><span>9:41</span><span style="color:#fff">●●●</span></div>
+              <svg viewBox="0 0 100 100" style="position:absolute;left:18%;top:26%;width:64%">
+                <rect x="4" y="4" width="92" height="92" rx="10" fill="none" stroke="#fff" stroke-width="2.4"/>
+                <g fill="rgba(255,255,255,.55)"><rect x="28" y="28" width="16" height="16"/><rect x="56" y="28" width="16" height="16"/><rect x="28" y="56" width="16" height="16"/><rect x="58" y="58" width="6" height="6"/><rect x="66" y="66" width="6" height="6"/></g>
+              </svg>
+              <div class="pill" style="top:15cqw">Klappe des Sicherungskastens</div>
+            </div>
+            <div class="sheet">
+              <div class="ok">Wohnung gefunden</div>
+              <div class="t">Lindwurmstr. 12 · 3. OG links</div>
+              <div class="s">Erfasst von Elektro Huber GmbH am 14.10.2026, vor dem Verputzen</div>
+              <div class="btn on" data-id="b2">Wohnung öffnen</div>
+            </div>
+          </div></div>
+        </div>
+
+        <div class="step">
+          <div class="lbl"><b>3</b> Wohnung</div>
+          <div class="phone"><div class="screen">
+            <div class="sb"><span>9:41</span><span>●●●</span></div>
+            <div class="hd" data-id="t2"><h3>Lindwurmstr. 12</h3><div class="s">3. OG links · 5 Räume · 21 Leitungen</div></div>
+            <div class="body">
+              <div class="card" style="padding:2.4cqw">
+                <svg viewBox="0 0 100 58">
+                  <g fill="none" stroke="#8e8e93" stroke-width="1"><rect x="2" y="2" width="96" height="54"/><line x1="52" y1="2" x2="52" y2="56"/><line x1="52" y1="30" x2="98" y2="30"/><line x1="2" y1="38" x2="52" y2="38"/><line x1="76" y1="30" x2="76" y2="56"/></g>
+                  <g font-size="6" fill="#6e6e73" font-family="system-ui"><text x="12" y="22">Wohnzimmer</text><text x="64" y="18">Schlafen</text><text x="12" y="50">Flur</text><text x="57" y="46">Küche</text><text x="81" y="46">Bad</text></g>
+                </svg>
+              </div>
+              <div class="li on" data-id="b3"><div><div class="t">Wohnzimmer</div><div class="s">Strom 6 · Heizung 2</div></div><span class="chev">›</span></div>
+              <div class="li"><div><div class="t">Küche</div><div class="s">Strom 5 · Wasser 3 · Gas 1</div></div><span class="chev">›</span></div>
+              <div class="li"><div><div class="t">Bad</div><div class="s">Wasser 4 · Strom 2</div></div><span class="chev">›</span></div>
+            </div>
+            <div class="nav"><span class="cur">Wohnung</span><span>Hilfe</span><span>Einstellungen</span></div>
+          </div></div>
+        </div>
+
+        <div class="step">
+          <div class="lbl"><b>4</b> Raum in 3D</div>
+          <div class="phone"><div class="screen">
+            <div class="sb"><span>9:41</span><span>●●●</span></div>
+            <div class="hd"><div class="back">‹ Lindwurmstr. 12</div><h3>Wohnzimmer</h3></div>
+            <div class="body">
+              <div class="card" style="padding:2cqw" data-id="t3">
+                <svg viewBox="0 0 100 74">
+                  <polygon points="10,56 50,40 90,56 50,72" fill="#f2f2f7" stroke="#aeaeb2" stroke-width=".8"/>
+                  <polygon points="10,56 50,40 50,8 10,24" fill="#fff" stroke="#8e8e93" stroke-width=".8"/>
+                  <polygon points="50,40 90,56 90,24 50,8" fill="#fafafa" stroke="#8e8e93" stroke-width=".8"/>
+                  <polygon points="32,47.2 42,43.2 42,29.2 32,33.2" fill="#e5e5ea" stroke="#aeaeb2" stroke-width=".6"/>
+                  <g fill="none" stroke-width="1.6" stroke-linecap="round">
+                    <line x1="10" y1="27.5" x2="50" y2="11.5" stroke="var(--strom)"/>
+                    <line x1="21" y1="23" x2="21" y2="48" stroke="var(--strom)"/>
+                    <line x1="54" y1="38" x2="86" y2="50.6" stroke="var(--heizung)"/>
+                    <line x1="78" y1="20" x2="78" y2="47" stroke="var(--strom)"/>
+                  </g>
+                  <rect x="19.6" y="47" width="2.8" height="2.8" fill="#fff" stroke="#6e6e73" stroke-width=".6"/>
+                  <text x="22" y="66" font-size="5" fill="#6e6e73" font-family="system-ui">Nordwand</text>
+                  <text x="66" y="66" font-size="5" fill="#6e6e73" font-family="system-ui">Ostwand</text>
+                </svg>
+              </div>
+              <div class="chips">
+                <span class="chip sel"><i style="background:var(--strom)"></i>Strom</span>
+                <span class="chip"><i style="background:var(--wasser)"></i>Wasser</span>
+                <span class="chip sel"><i style="background:var(--heizung)"></i>Heizung</span>
+                <span class="chip"><i style="background:var(--gas)"></i>Gas</span>
+              </div>
+              <div class="li on" data-id="b4"><div><div class="t">Nordwand</div><div class="s">Strom 2</div></div><span class="chev">›</span></div>
+              <div class="li"><div><div class="t">Ostwand</div><div class="s">Strom 1 · Heizung 1</div></div><span class="chev">›</span></div>
+            </div>
+            <div class="nav"><span class="cur">Wohnung</span><span>Hilfe</span><span>Einstellungen</span></div>
+          </div></div>
+        </div>
+
+        <div class="step">
+          <div class="lbl"><b>5</b> Wand und Bohrpunkt</div>
+          <div class="phone"><div class="screen">
+            <div class="sb"><span>9:41</span><span>●●●</span></div>
+            <div class="hd"><div class="back">‹ Wohnzimmer</div><h3>Nordwand</h3><div class="s">4,20 × 2,55 m</div></div>
+            <div class="body">
+              <div class="card" style="padding:2cqw" data-id="t4">
+                <svg viewBox="0 0 100 64">
+                  <rect x="2" y="2" width="96" height="60" fill="#fff" stroke="#8e8e93" stroke-width=".8"/>
+                  <rect x="56" y="12" width="24" height="24" fill="#e5e5ea" stroke="#aeaeb2" stroke-width=".6"/>
+                  <rect x="58" y="44" width="20" height="9" fill="#f2f2f7" stroke="#aeaeb2" stroke-width=".6"/>
+                  <rect x="2" y="5" width="96" height="6" fill="var(--strom)" opacity=".14"/>
+                  <rect x="13" y="8" width="6" height="42" fill="var(--strom)" opacity=".14"/>
+                  <g fill="none" stroke-width="1.4" stroke-linecap="round">
+                    <line x1="2" y1="8" x2="98" y2="8" stroke="var(--strom)"/>
+                    <line x1="16" y1="8" x2="16" y2="49" stroke="var(--strom)"/>
+                    <line x1="50" y1="57" x2="78" y2="57" stroke="var(--heizung)"/>
+                    <line x1="78" y1="57" x2="78" y2="53" stroke="var(--heizung)"/>
+                  </g>
+                  <rect x="14" y="49" width="4" height="4" fill="#fff" stroke="#6e6e73" stroke-width=".6"/>
+                  <rect x="19" y="49" width="4" height="4" fill="#fff" stroke="#6e6e73" stroke-width=".6"/>
+                  <g stroke="#1d1d1f" stroke-width=".8" fill="none"><circle cx="22" cy="28" r="2.6"/><line x1="22" y1="23" x2="22" y2="33"/><line x1="17" y1="28" x2="27" y2="28"/></g>
+                  <text x="26" y="25" font-size="4.6" fill="#1d1d1f" font-family="system-ui">6 cm</text>
+                </svg>
+              </div>
+              <div class="warn"><div class="t">Strom-Leitung 6 cm neben dem Bohrpunkt</div><div class="s">Hier lieber nicht bohren.</div></div>
+              <div class="s">Zeigt nur dokumentierte Leitungen. Keine Garantie, dass eine Stelle frei ist.</div>
+              <div class="btn ghost on" data-id="b5">In AR an der Wand zeigen</div>
+            </div>
+            <div class="nav"><span class="cur">Wohnung</span><span>Hilfe</span><span>Einstellungen</span></div>
+          </div></div>
+        </div>
+
+        <div class="step">
+          <div class="lbl"><b>6</b> AR an der echten Wand <span style="font-weight:400">(Ausbaustufe)</span></div>
+          <div class="phone"><div class="screen">
+            <div class="cam" style="flex:1 1 auto" data-id="t5">
+              <div class="sb" style="color:#fff"><span>9:41</span><span style="color:#fff">●●●</span></div>
+              <div class="pill" style="top:13cqw">Ausgerichtet an 2 Fixpunkten</div>
+              <svg viewBox="0 0 100 120" style="position:absolute;left:0;top:22%;width:100%">
+                <polygon points="6,8 94,2 94,104 6,96" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.6)" stroke-width=".8"/>
+                <polygon points="56,22 82,20 82,48 56,49" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.6)" stroke-width=".6"/>
+                <g fill="none" stroke-width="2" stroke-linecap="round">
+                  <line x1="6" y1="14" x2="94" y2="9" stroke="var(--strom)"/>
+                  <line x1="20" y1="13" x2="20" y2="80" stroke="var(--strom)"/>
+                  <line x1="50" y1="92" x2="80" y2="93" stroke="var(--heizung)"/>
+                </g>
+                <rect x="17.5" y="80" width="5" height="5" fill="none" stroke="#fff" stroke-width=".8"/>
+                <circle cx="20" cy="82.5" r="5" fill="none" stroke="#fff" stroke-width=".8" stroke-dasharray="1.5 1.5"/>
+                <circle cx="56" cy="49" r="4" fill="none" stroke="#fff" stroke-width=".8" stroke-dasharray="1.5 1.5"/>
+              </svg>
+            </div>
+            <div class="sheet">
+              <div class="t">Fixpunkte: Steckdose, Fensterecke</div>
+              <div class="s">Linien zeigen einen Korridor von ±5 cm, nicht die exakte Lage.</div>
+              <div class="btn ghost">Neu ausrichten</div>
+            </div>
+          </div></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HANDWERKER ============ -->
+  <section>
+    <h2>Handwerker: Wohnung bei offenen Wänden erfassen</h2>
+    <p>Elektro Huber scannt die Lindwurmstr. 12 nach der Installation und vor dem Verputzen.</p>
+    <div class="strip" tabindex="0" aria-label="Ablauf Handwerker">
+      <div class="track">
+
+        <div class="step">
+          <div class="lbl"><b>1</b> Aufträge</div>
+          <div class="phone"><div class="screen">
+            <div class="sb"><span>9:41</span><span>●●●</span></div>
+            <div class="hd"><h3>Aufträge</h3><div class="s">Elektro Huber GmbH</div></div>
+            <div class="body">
+              <div class="li on" data-id="h1"><div><div class="t">Lindwurmstr. 12 · 3. OG links</div><div class="s">Wände offen · 2 von 5 Räumen</div></div><span class="chev">›</span></div>
+              <div class="li"><div><div class="t">Westendstr. 88 · 1. OG</div><div class="s">Geplant · 20.11.2026</div></div><span class="chev">›</span></div>
+              <div class="li"><div><div class="t">Ganghoferstr. 5 · EG</div><div class="s">Hochgeladen · 02.11.2026</div></div><span class="chev">›</span></div>
+              <div class="btn ghost" style="margin-top:auto;margin-bottom:3cqw">+ Neue Wohnung</div>
+            </div>
+            <div class="nav"><span class="cur">Aufträge</span><span>Scannen</span><span>Einstellungen</span></div>
+          </div></div>
+        </div>
+
+        <div class="step">
+          <div class="lbl"><b>2</b> Räume der Wohnung</div>
+          <div class="phone"><div class="screen">
+            <div class="sb"><span>9:41</span><span>●●●</span></div>
+            <div class="hd" data-id="u1"><div class="back">‹ Aufträge</div><h3>Lindwurmstr. 12</h3><div class="s">3. OG links · Hausverwaltung Kaya</div></div>
+            <div class="body">
+              <div class="li"><div><div class="t">Flur</div><div class="s ok">Gescannt · 3 Leitungen</div></div></div>
+              <div class="li"><div><div class="t">Küche</div><div class="s ok">Gescannt · 9 Leitungen</div></div></div>
+              <div class="li"><div><div class="t">Wohnzimmer</div><div class="s">Offen</div></div></div>
+              <div class="li"><div><div class="t">Bad</div><div class="s">Offen</div></div></div>
+              <div class="btn on" data-id="h2" style="margin-top:auto;margin-bottom:3cqw">Wohnzimmer scannen</div>
+            </div>
+            <div class="nav"><span class="cur">Aufträge</span><span>Scannen</span><span>Einstellungen</span></div>
+          </div></div>
+        </div>
+
+        <div class="step">
+          <div class="lbl"><b>3</b> Raum scannen (LiDAR)</div>
+          <div class="phone"><div class="screen">
+            <div class="cam" style="flex:1 1 auto" data-id="u2">
+              <div class="sb" style="color:#fff"><span>9:41</span><span style="color:#fff">●●●</span></div>
+              <div class="pill" style="top:13cqw">Wände 3 von 4</div>
+              <svg viewBox="0 0 100 120" style="position:absolute;left:0;top:24%;width:100%">
+                <g stroke="rgba(255,255,255,.7)" stroke-width=".8" fill="none">
+                  <polygon points="8,10 92,4 92,100 8,94"/>
+                  <line x1="22" y1="9" x2="22" y2="95"/><line x1="36" y1="8" x2="36" y2="96"/><line x1="50" y1="7" x2="50" y2="97"/><line x1="64" y1="6" x2="64" y2="98"/><line x1="78" y1="5" x2="78" y2="99"/>
+                </g>
+                <g stroke="rgba(255,255,255,.25)" stroke-width=".5" fill="none">
+                  <path d="M8,30 L92,26 M8,50 L92,48 M8,70 L92,70 M22,9 L36,30 L50,7 L64,30 L78,5 M22,95 L36,70 L50,97 L64,70 L78,99"/>
+                </g>
+                <path d="M8,16 L92,11 M29,15 L29,80" stroke="var(--strom)" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <rect x="26.5" y="80" width="5" height="5" fill="none" stroke="#fff" stroke-width=".8"/>
+              </svg>
+            </div>
+            <div class="sheet">
+              <div class="s">Langsam an den offenen Wänden entlanggehen.</div>
+              <div class="bar"><i style="background:#8e8e93"></i></div>
+              <div class="btn on" data-id="h3">Scan beenden</div>
+            </div>
+          </div></div>
+        </div>
+
+        <div class="step">
+          <div class="lbl"><b>4</b> Leitungen markieren</div>
+          <div class="phone"><div class="screen">
+            <div class="sb"><span>9:41</span><span>●●●</span></div>
+            <div class="hd"><div class="back">‹ Wohnzimmer</div><h3>Nordwand</h3><div class="s">Linie entlang der Leitung tippen</div></div>
+            <div class="body">
+              <div class="card" style="padding:2cqw" data-id="u3">
+                <svg viewBox="0 0 100 64">
+                  <rect x="2" y="2" width="96" height="60" fill="#fff" stroke="#8e8e93" stroke-width=".8"/>
+                  <rect x="56" y="12" width="24" height="24" fill="#e5e5ea" stroke="#aeaeb2" stroke-width=".6"/>
+                  <g fill="none" stroke-width="1.4" stroke-linecap="round">
+                    <line x1="2" y1="8" x2="98" y2="8" stroke="var(--strom)"/>
+                    <line x1="16" y1="8" x2="16" y2="49" stroke="var(--strom)"/>
+                  </g>
+                  <g fill="#fff" stroke="var(--strom)" stroke-width="1"><circle cx="16" cy="8" r="1.8"/><circle cx="16" cy="49" r="1.8"/></g>
+                  <rect x="14" y="49" width="4" height="4" fill="#fff" stroke="#6e6e73" stroke-width=".6"/>
+                  <rect x="19" y="49" width="4" height="4" fill="#fff" stroke="#6e6e73" stroke-width=".6"/>
+                  <text x="25" y="57" font-size="4.4" fill="#6e6e73" font-family="system-ui">Fixpunkt Dose</text>
+                </svg>
+              </div>
+              <div class="s">Art der Leitung</div>
+              <div class="chips">
+                <span class="chip sel"><i style="background:var(--strom)"></i>Strom</span>
+                <span class="chip"><i style="background:var(--wasser)"></i>Wasser</span>
+                <span class="chip"><i style="background:var(--heizung)"></i>Heizung</span>
+                <span class="chip"><i style="background:var(--gas)"></i>Gas</span>
+              </div>
+              <div class="li"><div class="t">+ Fixpunkt setzen</div><span class="s">2 gesetzt</span></div>
+              <div class="btn on" data-id="h4" style="margin-top:auto;margin-bottom:3cqw">Raum fertig</div>
+            </div>
+            <div class="nav"><span>Aufträge</span><span class="cur">Scannen</span><span>Einstellungen</span></div>
+          </div></div>
+        </div>
+
+        <div class="step">
+          <div class="lbl"><b>5</b> Hochladen und QR verknüpfen</div>
+          <div class="phone"><div class="screen">
+            <div class="sb"><span>9:41</span><span>●●●</span></div>
+            <div class="hd" data-id="u4"><h3>Wohnung abschließen</h3><div class="s">Lindwurmstr. 12 · 3. OG links</div></div>
+            <div class="body">
+              <div class="card">
+                <div class="li" style="background:none;border:0;padding:1cqw 0"><span>Räume gescannt</span><span class="t">5 von 5</span></div>
+                <div class="li" style="background:none;border:0;padding:1cqw 0"><span>Leitungen</span><span class="t">21</span></div>
+                <div class="li" style="background:none;border:0;padding:1cqw 0"><span>Fixpunkte</span><span class="t">9</span></div>
+              </div>
+              <div class="card" style="text-align:center">
+                <div class="qr"><svg viewBox="0 0 10 10" width="60%"><g fill="#8e8e93"><rect x="0" y="0" width="4" height="4"/><rect x="6" y="0" width="4" height="4"/><rect x="0" y="6" width="4" height="4"/><rect x="6" y="6" width="2" height="2"/><rect x="8" y="8" width="2" height="2"/></g></svg></div>
+                <div class="t">QR-Aufkleber AS-7F3K-29</div>
+                <div class="s ok">Verknüpft · im Sicherungskasten kleben</div>
+              </div>
+              <div class="btn" style="margin-top:auto;margin-bottom:3cqw">Hochladen</div>
+            </div>
+            <div class="nav"><span class="cur">Aufträge</span><span>Scannen</span><span>Einstellungen</span></div>
+          </div></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EINSTELLUNGEN ============ -->
+  <section>
+    <h2>Einstellungen: Modus wechseln</h2>
+    <p>Für den Prototyp eine App. Der Modus-Schalter in den Einstellungen wechselt zwischen Bewohner und Handwerker.</p>
+    <div class="strip" tabindex="0" aria-label="Ablauf Einstellungen">
+      <div class="track">
+
+        <div class="step">
+          <div class="lbl"><b>1</b> Einstellungen (Bewohner)</div>
+          <div class="phone"><div class="screen">
+            <div class="sb"><span>9:41</span><span>●●●</span></div>
+            <div class="hd"><h3>Einstellungen</h3></div>
+            <div class="body">
+              <div class="s">Modus</div>
+              <div class="seg"><span class="sel">Bewohner</span><span class="on" data-id="s1">Handwerker</span></div>
+              <div class="li"><span>Meine Wohnungen</span><span class="s">1 ›</span></div>
+              <div class="li"><span>Sprache</span><span class="s">Deutsch ›</span></div>
+              <div class="li"><span>Hinweis zur Genauigkeit</span><span class="chev">›</span></div>
+            </div>
+            <div class="nav"><span>Wohnung</span><span>Hilfe</span><span class="cur">Einstellungen</span></div>
+          </div></div>
+        </div>
+
+        <div class="step">
+          <div class="lbl"><b>2</b> Als Betrieb anmelden</div>
+          <div class="phone"><div class="screen">
+            <div class="sb"><span>9:41</span><span>●●●</span></div>
+            <div class="hd" data-id="v1"><h3>Handwerker-Modus</h3><div class="s">Zum Erfassen braucht es ein Betriebskonto.</div></div>
+            <div class="body">
+              <div class="li" style="background:#fff;border-color:var(--line)"><span class="s">Betrieb</span><span>Elektro Huber GmbH</span></div>
+              <div class="li" style="background:#fff;border-color:var(--line)"><span class="s">Code</span><span>••••••</span></div>
+              <div class="s">Gerät mit LiDAR erkannt: iPhone Pro</div>
+              <div class="btn" style="margin-top:auto;margin-bottom:3cqw">Weiter zu Aufträgen</div>
+            </div>
+            <div class="nav"><span>Aufträge</span><span>Scannen</span><span class="cur">Einstellungen</span></div>
+          </div></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+(function(){
+  const pairs=[['b1','t1'],['b2','t2'],['b3','t3'],['b4','t4'],['b5','t5'],['h1','u1'],['h2','u2'],['h3','u3'],['h4','u4'],['s1','v1']];
+  const NS='http://www.w3.org/2000/svg';
+  function draw(){
+    document.querySelectorAll('.track').forEach(track=>{
+      let svg=track.querySelector('svg.links');
+      if(!svg){
+        svg=document.createElementNS(NS,'svg');svg.setAttribute('class','links');
+        svg.innerHTML='<defs><marker id="ah-'+Math.random().toString(36).slice(2,7)+'" viewBox="0 0 8 8" refX="6.5" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path d="M1,1 L6.5,4 L1,7" fill="none" stroke="#007AFF" stroke-width="1.95" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>';
+        track.appendChild(svg);
+      }
+      const mid=svg.querySelector('marker').id;
+      svg.querySelectorAll('path.c').forEach(p=>p.remove());
+      svg.setAttribute('width',track.scrollWidth);svg.setAttribute('height',track.scrollHeight);
+      const tb=track.getBoundingClientRect();
+      pairs.forEach(([a,b])=>{
+        const ea=track.querySelector('[data-id="'+a+'"]'),eb=track.querySelector('[data-id="'+b+'"]');
+        if(!ea||!eb)return;
+        const ra=ea.getBoundingClientRect(),rb=eb.getBoundingClientRect();
+        const x1=ra.right-tb.left+1, y1=ra.top+ra.height/2-tb.top;
+        const x2=rb.left-tb.left-3, y2=Math.min(rb.top+rb.height/2, rb.top+60)-tb.top;
+        const reach=Math.max(28,(x2-x1)*.55);
+        const p=document.createElementNS(NS,'path');p.setAttribute('class','c');
+        p.setAttribute('d',`M${x1} ${y1} C${x1+reach} ${y1}, ${x2-reach} ${y2}, ${x2} ${y2}`);
+        p.setAttribute('marker-end',`url(#${mid})`);
+        svg.appendChild(p);
+      });
+    });
+  }
+  window.addEventListener('resize',draw);
+  window.addEventListener('load',draw);
+  if(document.fonts)document.fonts.ready.then(draw);
+  draw();
+})();
+</script>
+</body>
+</html>

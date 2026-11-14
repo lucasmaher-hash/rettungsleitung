@@ -79,6 +79,14 @@ svg.links path.c{fill:none;stroke:var(--accent);stroke-width:var(--stroke);vecto
 .qr{width:16cqw;height:16cqw;border:1px solid var(--line);border-radius:3cqw;margin:0 auto 2cqw;display:grid;place-items:center;background:var(--fill)}
 .ok{color:#248A3D;font-weight:600}
 .on{border:var(--stroke) solid var(--accent)!important}
+.dock{flex:0 0 auto;background:var(--fill);border-top:1px solid var(--fill2);padding:2.8cqw 4cqw 0}
+.dock .chips{justify-content:center;flex-wrap:nowrap;gap:1.2cqw}
+.dock .chip{padding:.8cqw 1.8cqw;font-size:3.3cqw;white-space:nowrap}
+.dock+.nav{border-top:0}
+.room{flex:1 1 auto;min-height:0;display:flex;align-items:center;justify-content:center;padding:2cqw}
+.room svg{width:100%;max-height:100%}
+.dist{display:grid;grid-template-columns:1fr 1fr;gap:1.4cqw 3cqw;margin-top:2cqw;font-weight:600}
+.dist em{display:block;font-style:normal;font-weight:400;font-size:3.4cqw;color:var(--ink2)}
 .bar{height:1.6cqw;background:var(--fill2);border-radius:1cqw;overflow:hidden}
 .bar i{display:block;height:100%;width:75%;background:#fff}
 svg{display:block}
@@ -172,67 +180,44 @@ svg{display:block}
           <div class="lbl"><b>4</b> Raum in 3D</div>
           <div class="phone"><div class="screen">
             <div class="sb"><span>9:41</span><span>●●●</span></div>
-            <div class="hd"><div class="back">‹ Lindwurmstr. 12</div><h3>Wohnzimmer</h3></div>
+            <div class="hd"><div class="back">‹ Lindwurmstr. 12</div><h3>Wohnzimmer</h3><div class="s">Leitung antippen, um Abstände zu sehen</div></div>
             <div class="body">
-              <div class="card" style="padding:2cqw" data-id="t3">
-                <svg viewBox="0 0 100 74">
-                  <polygon points="10,56 50,40 90,56 50,72" fill="#f2f2f7" stroke="#aeaeb2" stroke-width=".8"/>
-                  <polygon points="10,56 50,40 50,8 10,24" fill="#fff" stroke="#8e8e93" stroke-width=".8"/>
-                  <polygon points="50,40 90,56 90,24 50,8" fill="#fafafa" stroke="#8e8e93" stroke-width=".8"/>
-                  <polygon points="32,47.2 42,43.2 42,29.2 32,33.2" fill="#e5e5ea" stroke="#aeaeb2" stroke-width=".6"/>
-                  <g fill="none" stroke-width="1.6" stroke-linecap="round">
-                    <line x1="10" y1="27.5" x2="50" y2="11.5" stroke="var(--strom)"/>
-                    <line x1="21" y1="23" x2="21" y2="48" stroke="var(--strom)"/>
-                    <line x1="54" y1="38" x2="86" y2="50.6" stroke="var(--heizung)"/>
-                    <line x1="78" y1="20" x2="78" y2="47" stroke="var(--strom)"/>
-                  </g>
-                  <rect x="19.6" y="47" width="2.8" height="2.8" fill="#fff" stroke="#6e6e73" stroke-width=".6"/>
-                  <text x="22" y="66" font-size="5" fill="#6e6e73" font-family="system-ui">Nordwand</text>
-                  <text x="66" y="66" font-size="5" fill="#6e6e73" font-family="system-ui">Ostwand</text>
-                </svg>
-              </div>
-              <div class="chips">
-                <span class="chip sel"><i style="background:var(--strom)"></i>Strom</span>
-                <span class="chip"><i style="background:var(--wasser)"></i>Wasser</span>
-                <span class="chip sel"><i style="background:var(--heizung)"></i>Heizung</span>
-                <span class="chip"><i style="background:var(--gas)"></i>Gas</span>
-              </div>
-              <div class="li on" data-id="b4"><div><div class="t">Nordwand</div><div class="s">Strom 2</div></div><span class="chev">›</span></div>
-              <div class="li"><div><div class="t">Ostwand</div><div class="s">Strom 1 · Heizung 1</div></div><span class="chev">›</span></div>
+              <div class="card room" data-room="view"></div>
+              <div class="btn ghost" style="margin-bottom:2.6cqw">In AR anzeigen</div>
             </div>
+            <div class="dock"><div class="chips">
+              <span class="chip sel"><i style="background:var(--strom)"></i>Strom</span>
+              <span class="chip"><i style="background:var(--wasser)"></i>Wasser</span>
+              <span class="chip sel"><i style="background:var(--heizung)"></i>Heizung</span>
+              <span class="chip"><i style="background:var(--gas)"></i>Gas</span>
+            </div></div>
             <div class="nav"><span class="cur">Wohnung</span><span>Hilfe</span><span>Einstellungen</span></div>
           </div></div>
         </div>
 
         <div class="step">
-          <div class="lbl"><b>5</b> Wand und Bohrpunkt</div>
+          <div class="lbl"><b>5</b> Leitung angetippt: Abstände</div>
           <div class="phone"><div class="screen">
             <div class="sb"><span>9:41</span><span>●●●</span></div>
-            <div class="hd"><div class="back">‹ Wohnzimmer</div><h3>Nordwand</h3><div class="s">4,20 × 2,55 m</div></div>
+            <div class="hd"><div class="back">‹ Lindwurmstr. 12</div><h3>Wohnzimmer</h3></div>
             <div class="body">
-              <div class="card" style="padding:2cqw" data-id="t4">
-                <svg viewBox="0 0 100 64">
-                  <rect x="2" y="2" width="96" height="60" fill="#fff" stroke="#8e8e93" stroke-width=".8"/>
-                  <rect x="56" y="12" width="24" height="24" fill="#e5e5ea" stroke="#aeaeb2" stroke-width=".6"/>
-                  <rect x="58" y="44" width="20" height="9" fill="#f2f2f7" stroke="#aeaeb2" stroke-width=".6"/>
-                  <rect x="2" y="5" width="96" height="6" fill="var(--strom)" opacity=".14"/>
-                  <rect x="13" y="8" width="6" height="42" fill="var(--strom)" opacity=".14"/>
-                  <g fill="none" stroke-width="1.4" stroke-linecap="round">
-                    <line x1="2" y1="8" x2="98" y2="8" stroke="var(--strom)"/>
-                    <line x1="16" y1="8" x2="16" y2="49" stroke="var(--strom)"/>
-                    <line x1="50" y1="57" x2="78" y2="57" stroke="var(--heizung)"/>
-                    <line x1="78" y1="57" x2="78" y2="53" stroke="var(--heizung)"/>
-                  </g>
-                  <rect x="14" y="49" width="4" height="4" fill="#fff" stroke="#6e6e73" stroke-width=".6"/>
-                  <rect x="19" y="49" width="4" height="4" fill="#fff" stroke="#6e6e73" stroke-width=".6"/>
-                  <g stroke="#1d1d1f" stroke-width=".8" fill="none"><circle cx="22" cy="28" r="2.6"/><line x1="22" y1="23" x2="22" y2="33"/><line x1="17" y1="28" x2="27" y2="28"/></g>
-                  <text x="26" y="25" font-size="4.6" fill="#1d1d1f" font-family="system-ui">6 cm</text>
-                </svg>
+              <div class="card room" data-room="sel" data-id="t4"></div>
+              <div class="card" style="padding:2.8cqw 3.4cqw">
+                <div class="t">Strom-Leitung, senkrecht</div>
+                <div class="s">Ostwand · führt zur Steckdose · Korridor ±5 cm</div>
+                <div class="dist">
+                  <span><em>Decke</em>30 cm</span><span><em>Boden</em>30 cm</span>
+                  <span><em>Ecke links</em>2,14 m</span><span><em>Ecke rechts</em>0,86 m</span>
+                </div>
               </div>
-              <div class="warn"><div class="t">Strom-Leitung 6 cm neben dem Bohrpunkt</div><div class="s">Hier lieber nicht bohren.</div></div>
-              <div class="s">Zeigt nur dokumentierte Leitungen. Keine Garantie, dass eine Stelle frei ist.</div>
-              <div class="btn ghost on" data-id="b5">In AR an der Wand zeigen</div>
+              <div class="btn ghost on" data-id="b5" style="margin-bottom:2.6cqw">In AR anzeigen</div>
             </div>
+            <div class="dock"><div class="chips">
+              <span class="chip sel"><i style="background:var(--strom)"></i>Strom</span>
+              <span class="chip"><i style="background:var(--wasser)"></i>Wasser</span>
+              <span class="chip sel"><i style="background:var(--heizung)"></i>Heizung</span>
+              <span class="chip"><i style="background:var(--gas)"></i>Gas</span>
+            </div></div>
             <div class="nav"><span class="cur">Wohnung</span><span>Hilfe</span><span>Einstellungen</span></div>
           </div></div>
         </div>
@@ -333,35 +318,21 @@ svg{display:block}
         </div>
 
         <div class="step">
-          <div class="lbl"><b>4</b> Leitungen markieren</div>
+          <div class="lbl"><b>4</b> Leitungen im 3D-Scan markieren</div>
           <div class="phone"><div class="screen">
             <div class="sb"><span>9:41</span><span>●●●</span></div>
-            <div class="hd"><div class="back">‹ Wohnzimmer</div><h3>Nordwand</h3><div class="s">Linie entlang der Leitung tippen</div></div>
+            <div class="hd"><div class="back">‹ Lindwurmstr. 12</div><h3>Wohnzimmer</h3><div class="s">Leitung Punkt für Punkt nachtippen</div></div>
             <div class="body">
-              <div class="card" style="padding:2cqw" data-id="u3">
-                <svg viewBox="0 0 100 64">
-                  <rect x="2" y="2" width="96" height="60" fill="#fff" stroke="#8e8e93" stroke-width=".8"/>
-                  <rect x="56" y="12" width="24" height="24" fill="#e5e5ea" stroke="#aeaeb2" stroke-width=".6"/>
-                  <g fill="none" stroke-width="1.4" stroke-linecap="round">
-                    <line x1="2" y1="8" x2="98" y2="8" stroke="var(--strom)"/>
-                    <line x1="16" y1="8" x2="16" y2="49" stroke="var(--strom)"/>
-                  </g>
-                  <g fill="#fff" stroke="var(--strom)" stroke-width="1"><circle cx="16" cy="8" r="1.8"/><circle cx="16" cy="49" r="1.8"/></g>
-                  <rect x="14" y="49" width="4" height="4" fill="#fff" stroke="#6e6e73" stroke-width=".6"/>
-                  <rect x="19" y="49" width="4" height="4" fill="#fff" stroke="#6e6e73" stroke-width=".6"/>
-                  <text x="25" y="57" font-size="4.4" fill="#6e6e73" font-family="system-ui">Fixpunkt Dose</text>
-                </svg>
-              </div>
-              <div class="s">Art der Leitung</div>
-              <div class="chips">
-                <span class="chip sel"><i style="background:var(--strom)"></i>Strom</span>
-                <span class="chip"><i style="background:var(--wasser)"></i>Wasser</span>
-                <span class="chip"><i style="background:var(--heizung)"></i>Heizung</span>
-                <span class="chip"><i style="background:var(--gas)"></i>Gas</span>
-              </div>
+              <div class="card room" data-room="mark" data-id="u3"></div>
               <div class="li"><div class="t">+ Fixpunkt setzen</div><span class="s">2 gesetzt</span></div>
-              <div class="btn on" data-id="h4" style="margin-top:auto;margin-bottom:3cqw">Raum fertig</div>
+              <div class="btn on" data-id="h4" style="margin-bottom:2.6cqw">Raum fertig</div>
             </div>
+            <div class="dock"><div class="chips">
+              <span class="chip sel"><i style="background:var(--strom)"></i>Strom</span>
+              <span class="chip"><i style="background:var(--wasser)"></i>Wasser</span>
+              <span class="chip"><i style="background:var(--heizung)"></i>Heizung</span>
+              <span class="chip"><i style="background:var(--gas)"></i>Gas</span>
+            </div></div>
             <div class="nav"><span>Aufträge</span><span class="cur">Scannen</span><span>Einstellungen</span></div>
           </div></div>
         </div>
@@ -437,6 +408,52 @@ svg{display:block}
 
 <script>
 (function(){
+  /* 3D-Raum (isometrisch): Nordwand links, Ostwand rechts */
+  const A='#007AFF';
+  function room(v){
+    const dim=v==='sel'?' opacity=".25"':'';
+    let s='<svg viewBox="4 4 96 72">'
+      +'<polygon points="8,60 50,43 92,60 50,77" fill="#f2f2f7" stroke="#aeaeb2" stroke-width=".7"/>'
+      +'<polygon points="8,60 50,43 50,7 8,24" fill="#fff" stroke="#8e8e93" stroke-width=".7"/>'
+      +'<polygon points="50,43 92,60 92,24 50,7" fill="#fafafa" stroke="#8e8e93" stroke-width=".7"/>'
+      +'<polygon points="31.1,38.6 41.6,34.4 41.6,20.4 31.1,24.6" fill="#e5e5ea" stroke="#aeaeb2" stroke-width=".5"/>'
+      +'<text x="20" y="71" font-size="4.2" fill="#8e8e93" font-family="system-ui">Nordwand</text>'
+      +'<text x="66" y="71" font-size="4.2" fill="#8e8e93" font-family="system-ui">Ostwand</text>';
+    if(v==='view') s+='<line data-id="b4" x1="80" y1="23.1" x2="80" y2="51" stroke="'+A+'" stroke-width="4.4" stroke-linecap="round"/>';
+    s+='<g fill="none" stroke-width="1.5" stroke-linecap="round"'+dim+'>'
+      +'<line x1="8" y1="28" x2="50" y2="11" stroke="var(--strom)"/>'
+      +'<line x1="50" y1="11" x2="92" y2="28" stroke="var(--strom)"/>'
+      +(v==='mark'
+        ? '<line x1="20.6" y1="23" x2="20.6" y2="40" stroke="var(--strom)"/><line x1="20.6" y1="40" x2="20.6" y2="51" stroke="var(--strom)" stroke-dasharray="1.6 1.6"/>'
+        : '<line x1="20.6" y1="23" x2="20.6" y2="51" stroke="var(--strom)"/>')
+      +'<line x1="55" y1="41" x2="74" y2="48.7" stroke="var(--heizung)"/>'
+      +'</g>';
+    s+= v==='sel'
+      ? '<line x1="80" y1="23.1" x2="80" y2="51" stroke="var(--strom)" stroke-width="2.4" stroke-linecap="round"/>'
+      : (v==='view' ? '<line x1="80" y1="23.1" x2="80" y2="51" stroke="var(--strom)" stroke-width="1.5" stroke-linecap="round"/>'
+                    : '<line x1="80" y1="23.1" x2="80" y2="51" stroke="var(--strom)" stroke-width="1.5" stroke-linecap="round"/>');
+    s+='<rect x="19.1" y="51" width="3" height="3" fill="#fff" stroke="#6e6e73" stroke-width=".5"/>'
+      +'<rect x="78.5" y="51" width="3" height="3" fill="#fff" stroke="#6e6e73" stroke-width=".5"/>';
+    if(v==='sel'){
+      s+='<g stroke="#1d1d1f" stroke-width=".5" fill="none">'
+        +'<line x1="83" y1="19.4" x2="83" y2="23.1"/><line x1="81.8" y1="23.1" x2="84.2" y2="23.1"/>'
+        +'<line x1="83" y1="54" x2="83" y2="56.3"/><line x1="81.8" y1="54" x2="84.2" y2="54"/>'
+        +'<line x1="50.4" y1="25" x2="79.4" y2="37.3"/><line x1="80.6" y1="37.5" x2="91.6" y2="42.2"/>'
+        +'</g>'
+        +'<g font-size="3.8" fill="#1d1d1f" font-family="system-ui" font-weight="600">'
+        +'<text x="84.5" y="21.8">30 cm</text><text x="84.5" y="58.6">30 cm</text>'
+        +'<text x="56" y="26.4">2,14 m</text><text x="83.4" y="47.4">0,86 m</text>'
+        +'</g>';
+    }
+    if(v==='mark'){
+      s+='<g fill="#fff" stroke="var(--strom)" stroke-width=".8"><circle cx="20.6" cy="23" r="1.5"/><circle cx="20.6" cy="40" r="1.5"/></g>'
+        +'<circle cx="20.6" cy="51" r="3" fill="none" stroke="#1d1d1f" stroke-width=".6"/>'
+        +'<g fill="none" stroke="#6e6e73" stroke-width=".5" stroke-dasharray="1 1"><circle cx="80" cy="52.5" r="3.2"/><circle cx="41.6" cy="34.4" r="2.6"/></g>';
+    }
+    return s+'</svg>';
+  }
+  document.querySelectorAll('[data-room]').forEach(el=>{el.innerHTML=room(el.dataset.room);});
+
   const pairs=[['b1','t1'],['b2','t2'],['b3','t3'],['b4','t4'],['b5','t5'],['h1','u1'],['h2','u2'],['h3','u3'],['h4','u4'],['s1','v1']];
   const NS='http://www.w3.org/2000/svg';
   function draw(){
